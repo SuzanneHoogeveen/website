@@ -1,0 +1,100 @@
+---
+title: Publications
+author: Suzanne Hoogeveen
+date: '2022-10-25'
+slug: []
+categories: []
+tags:
+  - publications
+  - preprints
+meta_img: images/image.png
+description: Academic pulications
+bibliography: "cv.bib"
+#css: "fontawesome.min.css"
+csl: apa6.csl
+output: md_document
+---
+
+```{r bibs, include=FALSE}
+library(bib2df)
+library(stevemisc)
+
+bib_df <- bib2df(file="cv.bib")
+bib_df$AUTHOR.AN <- NULL
+
+bib_df$AUTHOR[bib_df$BIBTEXKEY=="vandermiesen2022effect"][[1]][1] <- paste0("{",bib_df$AUTHOR[bib_df$BIBTEXKEY=="vandermiesen2022effect"][[1]][1])
+bib_df$AUTHOR[bib_df$BIBTEXKEY=="vanelk2020placebo"][[1]][1] <- paste0("{",bib_df$AUTHOR[bib_df$BIBTEXKEY=="vanelk2020placebo"][[1]][1])
+
+
+#bib_df$AUTHOR <- stringi::stri_replace_all_regex(bib_df$AUTHOR, "[\\{\\}]", "")
+#bib_df$TITLE <- stringi::stri_replace_all_regex(bib_df$TITLE, "[\\{\\}]", "")
+#bib_df$JOURNAL <- stringi::stri_replace_all_regex(bib_df$JOURNAL, "[\\{\\}]", "")
+#bib_df$BOOKTITLE <- stringi::stri_replace_all_regex(bib_df$BOOKTITLE, "[\\{\\}]", "")
+
+# add pdf locations
+bib_df$FILE[!is.na(bib_df$FILE)] <- paste0("pdfs/",bib_df$BIBTEXKEY[!is.na(bib_df$FILE)],".pdf")
+
+```
+
+```{r print-bibs, results="asis", echo=FALSE,warning=FALSE, message=FALSE}
+
+bib_df$ord <- ifelse(!is.na(bib_df$STATUS), bib_df$STATUS, bib_df$YEAR)
+bib_df$ord[bib_df$ord %in% c("submitted","preprint")] <- 4000
+bib_df$ord[bib_df$ord %in% c("inpress")] <- 3000
+
+bib_df <- bib_df[order(bib_df$ord, decreasing=T),]
+
+for(y in 1:length(unique(bib_df$ord))){
+  bib <- bib_df[bib_df$ord==unique(bib_df$ord)[y],]
+  if(unique(bib_df$ord)[y] == 4000){
+    head <- "Preprints"
+  } else if(unique(bib_df$ord)[y] == 3000) {
+    head <- "In Press"
+  } else {
+    head <- unique(bib_df$ord)[y]
+  }
+  cat(paste0("### ",head,"\n\n"))
+      
+  for (i in 1:nrow(bib)){
+  t_bib_entry <- paste0(capture.output(df2bib(bib[i,])), collapse="")
+  t_md_citation<- paste0(stevemisc::print_refs(t_bib_entry,csl = "apa.csl",
+                                        spit_out = FALSE,
+                                        delete_after = FALSE), collapse=" ")
+  cat(t_md_citation)
+
+
+
+  cat("<span class = 'publinks'>")
+
+  if(any(names(bib)=="FILE")){
+    if( !is.na(bib[i,"FILE"]) ){
+     pdf_url <- paste0(bib[i,"FILE"])
+     #pdf_url <- here::here(pdf_url)
+      cat(c("  ",'<a href="',pdf_url,'"> <i class="fa fa-file-pdf"></i></a>'),
+        sep="")
+    }
+  }
+
+  if(any(names(bib)=="URL_WEBSITE")){
+    if( !is.na(bib[i,"URL_WEBSITE"]) ){
+      pdf_url <- as.character(bib[i,"URL_WEBSITE"])
+      cat(c("  ",'<a href="',pdf_url,'"> <i class="fas fa-globe"> website </i></a>'),
+        sep="")
+    }
+  }
+
+  if(any(names(bib)=="URL_DATA")){
+  if( !is.na(bib[i,"URL_DATA"]) ){
+      pdf_url <- as.character(bib[i,"URL_DATA"])
+      cat(c("  ",'<a href="',pdf_url,'"> <i class="fas fa-database"> data </i></a>'),
+        sep="")
+    }
+  }
+
+  cat("</span>")
+  cat("\n\n")
+}
+}
+
+
+```

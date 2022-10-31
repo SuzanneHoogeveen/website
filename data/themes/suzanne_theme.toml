@@ -1,0 +1,23 @@
+# Theme metadata
+name = "Coffee"
+
+[light]
+  # Primary
+  primary = "rgb(145, 20, 3)"
+
+  # Menu
+  menu_primary = "rgb(247, 247, 247)"
+  menu_text = "#000"
+  menu_text_active = "rgb(25, 25, 25)"
+  menu_title = "#000"
+
+  # Home sections
+  home_section_odd = "#FFF"
+  home_section_even = "rgb(234, 242, 250)"
+
+[dark]
+  # Primary
+  primary = "#fbbbbe"
+
+  link = "#fbbbbe"
+  link_hover = "#fbbbbe"
