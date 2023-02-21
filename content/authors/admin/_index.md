@@ -3,16 +3,20 @@ bio: My research interests include social cognition, religion, Bayesian modeling
 education:
   courses:
   - course: Postdoctoral Fellow
+    institution: University of Amsterdam
+    year: 2022-2023
+  - course: Postdoctoral Fellow
     institution: Leiden University
+    year: 2022
   - course: PhD in Social Psychology and Psychological Methods
     institution: University of Amsterdam
-    year: 2022
+    year: 2018-2022
   - course: Research Master Brain & Cognitive Sciences
     institution: University of Amsterdam
-    year: 2018
+    year: 2015-2018
   - course: Bachelor Psychology
     institution: Utrecht University
-    year: 2014
+    year: 2011-2014
 email: ""
 first_name: Suzanne
 highlight_name: true
