@@ -12,6 +12,7 @@ meta_img: images/image.png
 description: ''
 share: false
 ---
+**To believe or not to believe: Trust in science and belief in the supernatural**. Talk at the annual Skepsis conference on "the power of persuasion" (in Dutch), Amersfoort, The Netherlands, November, 2023.  
 
 **Workshop on many-analysts projects**. Workshop at the National Open Science Festival, hosted at the Free University Amsterdam, The Netherlands, September, 2022. 
 

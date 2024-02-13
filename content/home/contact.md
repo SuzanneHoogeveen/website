@@ -19,8 +19,8 @@ content:
   # Contact details (edit or remove options as required)
   email: suzanne.j.hoogeveen [at] gmail [dot] com
   address:
-    street: Psychological Methods <br> Room G0.31 <br> Nieuwe Achtergracht 129-B 
-    city: 1018 WS Amsterdam
+    street: Methodology and Statistics <br> Sjoerd Groenmangebouw, Room C1.16 <br> Padualaan 14
+    city: 3584 CH Utrecht
 
 design:
   columns: '2'
