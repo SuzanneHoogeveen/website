@@ -12,7 +12,8 @@ description: Academic pulications
 bibliography: "cv.bib"
 #css: "fontawesome.min.css"
 csl: apa6.csl
-output: md_document
+#output: md_document
+output: html_document
 ---
 ```{r bibs, include=FALSE}
 library(bib2df)
