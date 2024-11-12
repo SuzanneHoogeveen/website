@@ -14,13 +14,14 @@ bibliography: "cv.bib"
 csl: apa6.csl
 output: md_document
 ---
-
 ```{r bibs, include=FALSE}
 library(bib2df)
 library(stevemisc)
 
 bib_df <- bib2df(file="cv.bib")
-bib_df$AUTHOR.AN <- NULL
+
+#bib_df$AUTHOR.AN <- NULL
+bib_df$AUTHOR.1 <- NULL
 
 bib_df$AUTHOR[bib_df$BIBTEXKEY=="vandermiesen2022effect"][[1]][1] <- paste0("{",bib_df$AUTHOR[bib_df$BIBTEXKEY=="vandermiesen2022effect"][[1]][1])
 bib_df$AUTHOR[bib_df$BIBTEXKEY=="vanelk2020placebo"][[1]][1] <- paste0("{",bib_df$AUTHOR[bib_df$BIBTEXKEY=="vanelk2020placebo"][[1]][1])
